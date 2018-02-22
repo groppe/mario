@@ -32,6 +32,12 @@ jobs:
         - pip install -r requirements.txt
         - sls plugin install -n serverless-python-requirements
         - sls deploy
+        - pip install awscli
+        - npm install -g @angular/cli
+        - cd ../client
+        - npm install
+        - ng build --dev
+        - aws s3 sync dist/ s3://dev.kartskills.com --acl public-read
     - stage: deploy to Production
       if: branch = master AND type != pull_request
       env:
