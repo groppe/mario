@@ -39,6 +39,7 @@ def validate_slack_token(slack_request):
 
 
 def in_channel_response(text):
+    logging.critical('TESTING' + text)
     return {
         'response_type': 'in_channel',
         'text': text
